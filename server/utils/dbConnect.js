@@ -4,7 +4,7 @@ dotenv.config();
 
 async function dbConnect() {
    try {
-    const URI = process.env.DBURI;
+    const URI = process.env.DBURI
     await mongoose.connect(URI);
     console.log("database connected");
    } catch (error) {

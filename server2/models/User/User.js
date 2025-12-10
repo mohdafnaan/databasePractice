@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 
+
 const userSchema = new mongoose.Schema(
     {
         fullName : {
-            type : String,
+            type : "string",
             required : true,
             trim : true
         },
@@ -12,49 +13,39 @@ const userSchema = new mongoose.Schema(
             required : true,
             unique : true,
             lowercase : true,
-            trim : true,
+            trim : true
+        },
+        password : {
+            type : String,
+            required : true
         },
         phone : {
-            type : String,
+            type : Number,
             required : true,
-            unique : true,
             trim : true,
+            unique : true
         },
         age : {
-            type : Number,
-            minlength : [18, "Minimum age is 18"],
-            maxlength : [80, "maximun age is  80"]
+            type : Number ,
+            required : true,
+            minlength : [18, "minimum age is 18"],
+            maxlength : [80, "maximum age is 80"]
         },
         gender : {
             type : String,
-            enum : ["male","female","other"],
+            enum : ["Male", "Female", "Others"],
             required : true
         },
         isActive : {
             type : Boolean,
             default : true
-        },
-        isVerified : {
-            type : Boolean,
-            default : false
-        },
-        otp : {
-            type : Number,
-            default : null
-        },
-        address : {
-            type : String,
-            required : true
-        },
-        password : {
-            type : String,
-            required : true
         }
     },
     {
         timestamps : true,
     }
 );
+
 
 const userModel = mongoose.model("users",userSchema);
 
